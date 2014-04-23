@@ -2,11 +2,12 @@
 // Testing class Class.
 package com.wenboy.tij.typeinfo.basic.toys;
 
-import static com.wenboy.tij.util.Print.*;
+import static com.wenboy.tij.util.Print.print;
 
 interface HasBatteries {}
 interface Waterproof {}
 interface Shoots {}
+interface IsNew {}
 
 class Toy {
   // Comment out the following default constructor
@@ -16,12 +17,12 @@ class Toy {
 }
 
 class FancyToy extends Toy
-implements HasBatteries, Waterproof, Shoots {
+implements HasBatteries, Waterproof, Shoots, IsNew {
   FancyToy() { super(1); }
 }
 
 public class ToyTest {
-  static void printInfo(Class cc) {
+  static void printInfo(Class<?> cc) {
     print("Class name: " + cc.getName() +
       " is interface? [" + cc.isInterface() + "]");
     print("Simple name: " + cc.getSimpleName());
@@ -30,15 +31,15 @@ public class ToyTest {
   public static void main(String[] args) {
     Class c = null;
     try {
-      c = Class.forName("typeinfo.toys.FancyToy");
+      c = Class.forName("com.wenboy.tij.typeinfo.basic.toys.FancyToy");
     } catch(ClassNotFoundException e) {
       print("Can't find FancyToy");
       System.exit(1);
     }
     printInfo(c);	
-    for(Class face : c.getInterfaces())
+    for(Class<?> face : c.getInterfaces())
       printInfo(face);
-    Class up = c.getSuperclass();
+    Class<?> up = c.getSuperclass();
     Object obj = null;
     try {
       // Requires default constructor:

@@ -1,6 +1,6 @@
 package com.wenboy.tij.typeinfo.basic;
 
-import static com.wenboy.tij.util.Print.*;
+import static com.wenboy.tij.util.Print.print;
 
 class Candy {
   static { print("Loading Candy"); }
@@ -16,17 +16,26 @@ class Cookie {
 
 public class SweetShop {
   public static void main(String[] args) {	
-    print("inside main");
-    new Candy();
-    print("After creating Candy");
-    try {
-      Class.forName("Gum");
-    } catch(ClassNotFoundException e) {
-      print("Couldn't find Gum");
-    }
-    print("After Class.forName(\"Gum\")");
-    new Cookie();
-    print("After creating Cookie");
+//    print("inside main");
+//    new Candy();
+//    print("After creating Candy");
+//    try {
+//      Class.forName("Gum");
+//    } catch(ClassNotFoundException e) {
+//      print("Couldn't find Gum");
+//    }
+//    print("After Class.forName(\"Gum\")");
+//    new Cookie();
+//    print("After creating Cookie");
+	  try {
+		  System.out.println(Class.forName("com.wenboy.tij.typeinfo.basic.Candy").newInstance());
+	} catch (ClassNotFoundException e) {
+		e.printStackTrace();
+	} catch (InstantiationException e) {
+		e.printStackTrace();
+	} catch (IllegalAccessException e) {
+		e.printStackTrace();
+	}
   }
 } /* Output:
 inside main
