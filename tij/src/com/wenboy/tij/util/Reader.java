@@ -1,7 +1,8 @@
+package com.wenboy.tij.util;
 /**
  * 
  */
-package com.wenboy.tij.util;
+
 
 import java.util.List;
 
@@ -10,17 +11,6 @@ import java.util.List;
  *
  */
 public abstract class Reader {
-	public abstract List<String> read();
-	
-
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		Reader reader = new FileReader("/test");
-		List<String> lines = reader.read();
-		for(String line : lines){
-			System.out.println(line);
-		}
-	}
+	public abstract List<String> readLines();
+	public abstract String read();
 }
